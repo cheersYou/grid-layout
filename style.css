@@ -1,0 +1,59 @@
+.grid-container {
+  display: grid;
+  /* 33.33% 33.33% 33.33%;*/
+  /*repeat(3,33.3%) 重复3次33.3%*/
+  /* repeat(2, 100px 20px 80px) 重复两次 100px 20px 80px*/
+  /* repeat(auto,100px) 重复n个100px的元素，直到放不下换行*/
+  /* grid-template-columns：1fr 2fr fr关键字，两列:后面那列是前面的一倍，fr可以与px混合使用*/
+  /* minmax(100px,1fr) 返回值在100px-1fr之间*/
+  /*auto代表由浏览器自己决定 */
+  /* 指定每列的每个单元格长度 */
+  grid-template-columns: 100px 50px 100px;
+  /* 指定网格线名称，后面使用 */
+  /* grid-template-columns: [c1] 100px [c2] 200px [c3] 300px; */
+  /* 指定每行的每个单元格长度 */
+  grid-template-rows: 50px 100px 100px;
+  /* 行间隔 grid-gap合并写法*/
+  grid-row-gap: 20px;
+  /* 列间隔 */
+  grid-column-gap: 20px;
+  /*  */
+  grid-template-areas: "header header header"
+    "main main sidebar"
+    "footer footer footer";
+  /* 类似flex-direction*/
+  /* row dense和column dense; 代表紧密排列，尽可能不留空隙*/
+  grid-auto-flow: row;
+  /*start |end | center | stretch; place-items:[align-items][justify-items]*/
+  /* 单元格在该列排列方式  横轴*/
+  justify-items: center;
+  /*start |end | center | stretch;*/
+  /* 单元格在该行排列方式 纵轴*/
+  align-items: center;
+  /* start | end | center | stretch | space-around | space-between | space-evenly(项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔); */
+  /* 整个容器区域排列方式  place-content:[align-content][justify-content]*/
+  justify-content: start;
+  /* start | end | center | stretch | space-around | space-between | space-evenly; */
+  align-content: start;
+  /* 一些项目的指定位置，在现有网格的外部。比如网格只有3列，但是某一个项目指定在第5行。这时，浏览器会自动生成多余的网格，以便放置项目。指定多余单元格宽高 */
+  grid-auto-rows: 50px;
+  grid-auto-columns: 50px;
+}
+
+.grid-container div {
+  text-align: center;
+  /* 指定项目位置：grid-column-start左边框 grid-column-end 右边框 grid-row-start 上边框 grid-row-end 下边框  网格线索引(或名字)，从1开始*/
+  /*  grid-column:1 / 4 */
+  grid-column-start: 1;
+  grid-column-end: 4;
+  /* 跨越两行，产生重叠的话，使用z-index来区分 */
+  /*  grid-row:1 / 2 */
+  grid-row-start: span 2;
+  /* 指定项目放在哪一个区域 */
+  grid-area: header;
+  /* start | end | center | stretch; */
+  /* 该项目在单元格中的位置 */
+  justify-self: center;
+  align-self: center;
+  place-self: start end
+}
